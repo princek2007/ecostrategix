@@ -24,7 +24,7 @@
 // API CONFIGURATION
 // =====================================================
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "https://ecostrategix.onrender.com";
 
 const SIMULATION_API =
     `${API_BASE_URL}/api/simulation`;
