@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EcoStrategix — Event Sustainability Strategy Simulator</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="top-line"></div>
+
+    <!-- ================================================= -->
+    <!-- NAVBAR -->
+    <!-- ================================================= -->
+
+    <header class="navbar">
+
+        <a class="brand" href="#home">
+            <span class="brand-mark">E</span>
+            <span>ECOSTRATEGIX</span>
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#simulator">Simulator</a>
+            <a href="#strategies">Strategies</a>
+            <a href="#impact">Impact</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button
+            class="nav-cta"
+            data-scroll="#simulator"
+        >
+            Start Simulation
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- ================================================= -->
+        <!-- HERO -->
+        <!-- ================================================= -->
+
+        <section id="home" class="hero section">
+
+            <div class="hero-copy">
+
+                <div class="eyebrow">
+                    <span></span>
+                    EVENT SUSTAINABILITY STRATEGY SIMULATOR
+                </div>
+
+                <h1>
+                    Plan the Event.
+                    <br>
+                    <em>Simulate the Impact.</em>
+                    <br>
+                    Optimize the Strategy.
+                </h1>
+
+                <p class="hero-text">
+                    EcoStrategix helps event organizers understand
+                    environmental impact and test better sustainability
+                    strategies before the event happens.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        data-scroll="#simulator"
+                    >
+                        START SIMULATION
+                        <span>→</span>
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        data-scroll="#strategies"
+                    >
+                        EXPLORE DEMO
+                    </button>
+
+                </div>
+
+                <div class="hero-note">
+                    <span class="pulse-dot"></span>
+                    Illustrative demo environment · No official event data used
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- HERO VISUAL -->
+            <!-- ================================================= -->
+
+            <div class="hero-visual">
+
+                <div class="telemetry-card">
+
+                    <div class="telemetry-head">
+
+                        <div>
+                            <small>ECOSTRATEGIX LIVE SCENARIO</small>
+                            <strong>F1 GRAND PRIX</strong>
+                        </div>
+
+                        <span class="status">
+                            <i></i>
+                            SIMULATING
+                        </span>
+
+                    </div>
+
+
+                    <div class="track-visual">
+
+                        <div class="track-grid"></div>
+
+                        <svg
+                            viewBox="0 0 520 260"
+                            preserveAspectRatio="none"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                class="track-glow"
+                                d="M65 205 C35 175, 40 90, 125 62 C200 37, 286 58, 355 36 C423 15, 486 47, 465 103 C448 148, 378 129, 332 158 C283 190, 237 235, 168 222 C120 213, 96 224, 65 205Z"
+                            />
+
+                            <path
+                                class="track-line"
+                                d="M65 205 C35 175, 40 90, 125 62 C200 37, 286 58, 355 36 C423 15, 486 47, 465 103 C448 148, 378 129, 332 158 C283 190, 237 235, 168 222 C120 213, 96 224, 65 205Z"
+                            />
+
+                        </svg>
+
+                        <div class="track-pin">
+                            START
+                        </div>
+
+                        <div class="metric-float metric-a">
+                            <small>CO₂e</small>
+                            <strong id="heroImpact">—</strong>
+                        </div>
+
+                        <div class="metric-float metric-b">
+                            <small>ATTENDEES</small>
+                            <strong id="heroAttendees">—</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="telemetry-bottom">
+
+                        <div>
+                            <span>TRANSPORT</span>
+                            <strong id="heroTransport">—</strong>
+                        </div>
+
+                        <div>
+                            <span>ENERGY</span>
+                            <strong id="heroEnergy">—</strong>
+                        </div>
+
+                        <div>
+                            <span>WASTE</span>
+                            <strong id="heroWaste">—</strong>
+                        </div>
+
+                        <div class="mini-chart">
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                            <i></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- EVENT TYPES -->
+        <!-- ================================================= -->
+
+        <section class="event-strip section">
+
+            <div class="section-heading compact">
+
+                <div>
+
+                    <span class="eyebrow">
+                        ONE PLATFORM
+                    </span>
+
+                    <h2>Every Event.</h2>
+
+                </div>
+
+                <p>
+                    One common sustainability engine adapts
+                    to the event you are planning.
+                </p>
+
+            </div>
+
+
+            <div class="event-row">
+
+                <button
+                    class="event-tile active"
+                    data-event="f1"
+                >
+                    <b>01</b>
+                    <span>🏎️</span>
+                    <strong>Motorsport</strong>
+                    <small>F1 / Grand Prix</small>
+                </button>
+
+
+                <button
+                    class="event-tile"
+                    data-event="concert"
+                >
+                    <b>02</b>
+                    <span>🎵</span>
+                    <strong>Concert</strong>
+                    <small>Live Music</small>
+                </button>
+
+
+                <button
+                    class="event-tile"
+                    data-event="sports"
+                >
+                    <b>03</b>
+                    <span>🏟️</span>
+                    <strong>Sports</strong>
+                    <small>Stadium Event</small>
+                </button>
+
+
+                <button
+                    class="event-tile"
+                    data-event="festival"
+                >
+                    <b>04</b>
+                    <span>🎪</span>
+                    <strong>Festival</strong>
+                    <small>Outdoor Event</small>
+                </button>
+
+
+                <button
+                    class="event-tile"
+                    data-event="college"
+                >
+                    <b>05</b>
+                    <span>🎓</span>
+                    <strong>College</strong>
+                    <small>Campus Event</small>
+                </button>
+
+
+                <button
+                    class="event-tile"
+                    data-event="conference"
+                >
+                    <b>06</b>
+                    <span>🏢</span>
+                    <strong>Conference</strong>
+                    <small>Exhibition</small>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- SIMULATOR -->
+        <!-- ================================================= -->
+
+        <section
+            id="simulator"
+            class="simulator section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        01 / SIMULATOR
+                    </span>
+
+                    <h2>
+                        What are you organizing?
+                    </h2>
+
+                </div>
+
+                <p>
+                    Select an event type. EcoStrategix loads an
+                    illustrative scenario that you can change and optimize.
+                </p>
+
+            </div>
+
+
+            <!-- EVENT SELECTION -->
+
+            <div class="selection-grid">
+
+                <button
+                    class="select-card selected"
+                    data-event="f1"
+                >
+                    <span>🏎️</span>
+
+                    <div>
+                        <strong>F1 / Motorsport</strong>
+                        <small>Grand Prix scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button
+                    class="select-card"
+                    data-event="concert"
+                >
+                    <span>🎵</span>
+
+                    <div>
+                        <strong>Concert</strong>
+                        <small>Live music scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button
+                    class="select-card"
+                    data-event="sports"
+                >
+                    <span>🏟️</span>
+
+                    <div>
+                        <strong>Sports Event</strong>
+                        <small>Stadium scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button
+                    class="select-card"
+                    data-event="festival"
+                >
+                    <span>🎪</span>
+
+                    <div>
+                        <strong>Festival</strong>
+                        <small>Outdoor scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button
+                    class="select-card"
+                    data-event="college"
+                >
+                    <span>🎓</span>
+
+                    <div>
+                        <strong>College Event</strong>
+                        <small>Campus scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button
+                    class="select-card"
+                    data-event="conference"
+                >
+                    <span>🏢</span>
+
+                    <div>
+                        <strong>Exhibition / Conference</strong>
+                        <small>Business event scenario</small>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+
+            <!-- CURRENT SCENARIO -->
+
+            <div class="dashboard-head">
+
+                <div>
+
+                    <span class="eyebrow">
+                        CURRENT SCENARIO
+                    </span>
+
+                    <h2 id="eventTitle">
+                        F1 GRAND PRIX — EVENT SIMULATOR
+                    </h2>
+
+                </div>
+
+                <span class="demo-badge">
+                    ILLUSTRATIVE DEMO DATA
+                </span>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- DASHBOARD -->
+            <!-- ================================================= -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- MAIN IMPACT -->
+
+                <div class="impact-card">
+
+                    <div class="card-label">
+                        CURRENT ESTIMATED IMPACT
+                        <span>ⓘ</span>
+                    </div>
+
+
+                    <div class="impact-number">
+
+                        <span id="baselineImpact">
+                            —
+                        </span>
+
+                        <small>
+                            kg CO₂e
+                        </small>
+
+                    </div>
+
+
+                    <div class="impact-rule"></div>
+
+
+                    <div class="impact-rows">
+
+                        <div>
+                            <span>Transportation</span>
+                            <b id="transportPercent">—</b>
+                        </div>
+
+                        <div class="bar">
+                            <i
+                                id="transportBar"
+                                style="width:0%"
+                            ></i>
+                        </div>
+
+
+                        <div>
+                            <span>Energy</span>
+                            <b id="energyPercent">—</b>
+                        </div>
+
+                        <div class="bar">
+                            <i
+                                id="energyBar"
+                                style="width:0%"
+                            ></i>
+                        </div>
+
+
+                        <div>
+                            <span>Logistics</span>
+                            <b id="logisticsPercent">—</b>
+                        </div>
+
+                        <div class="bar">
+                            <i
+                                id="logisticsBar"
+                                style="width:0%"
+                            ></i>
+                        </div>
+
+
+                        <div>
+                            <span>Waste</span>
+                            <b id="wastePercent">—</b>
+                        </div>
+
+                        <div class="bar">
+                            <i
+                                id="wasteBar"
+                                style="width:0%"
+                            ></i>
+                        </div>
+
+
+                        <div>
+                            <span>Other</span>
+                            <b id="otherPercent">—</b>
+                        </div>
+
+                        <div class="bar">
+                            <i
+                                id="otherBar"
+                                style="width:0%"
+                            ></i>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- IMPACT MIX -->
+
+                <div class="donut-card">
+
+                    <div class="card-label">
+                        IMPACT MIX
+                    </div>
+
+
+                    <div class="donut-wrap">
+
+                        <div
+                            class="donut"
+                            id="impactDonut"
+                        ></div>
+
+                        <div class="donut-center">
+
+                            <strong id="donutTotal">
+                                —
+                            </strong>
+
+                            <span>
+                                KG CO₂e
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="legend">
+
+                        <span>
+                            <i class="c1"></i>
+                            Transport
+                        </span>
+
+                        <span>
+                            <i class="c2"></i>
+                            Energy
+                        </span>
+
+                        <span>
+                            <i class="c3"></i>
+                            Logistics
+                        </span>
+
+                        <span>
+                            <i class="c4"></i>
+                            Waste
+                        </span>
+
+                        <span>
+                            <i class="c5"></i>
+                            Other
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- METRICS -->
+
+                <div class="metric-grid">
+
+                    <div class="mini-card">
+
+                        <small>
+                            ATTENDEES
+                        </small>
+
+                        <strong id="attendeesMetric">
+                            —
+                        </strong>
+
+                        <span>
+                            people
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-card">
+
+                        <small>
+                            ENERGY
+                        </small>
+
+                        <strong id="energyMetric">
+                            —
+                        </strong>
+
+                        <span>
+                            kWh
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-card">
+
+                        <small>
+                            WASTE
+                        </small>
+
+                        <strong id="wasteMetric">
+                            —
+                        </strong>
+
+                        <span>
+                            tonnes
+                        </span>
+
+                    </div>
+
+
+                    <div class="mini-card">
+
+                        <small>
+                            DURATION
+                        </small>
+
+                        <strong id="durationMetric">
+                            —
+                        </strong>
+
+                        <span>
+                            days
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- INPUT PANEL -->
+            <!-- ================================================= -->
+
+            <div class="parameter-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            02 / INPUTS
+                        </span>
+
+                        <h3>
+                            Event Parameters
+                        </h3>
+
+                    </div>
+
+                    <span>
+                        Estimated using illustrative emission factors.
+                    </span>
+
+                </div>
+
+
+                <div class="inputs-grid">
+
+                    <label>
+                        Attendees
+
+                        <input
+                            id="attendees"
+                            type="number"
+                            min="100"
+                            value="85000"
+                        >
+
+                    </label>
+
+
+                    <label>
+                        Avg. travel distance
+
+                        <input
+                            id="distance"
+                            type="number"
+                            min="1"
+                            value="120"
+                        >
+
+                        <span class="unit">
+                            km
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Energy consumption
+
+                        <input
+                            id="energy"
+                            type="number"
+                            min="100"
+                            value="65000"
+                        >
+
+                        <span class="unit">
+                            kWh
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Renewable energy
+
+                        <input
+                            id="renewable"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="35"
+                        >
+
+                        <span
+                            class="range-value"
+                            id="renewableValue"
+                        >
+                            35%
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Car share
+
+                        <input
+                            id="car"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="50"
+                        >
+
+                        <span
+                            class="range-value"
+                            id="carValue"
+                        >
+                            50%
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Bus share
+
+                        <input
+                            id="bus"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="20"
+                        >
+
+                        <span
+                            class="range-value"
+                            id="busValue"
+                        >
+                            20%
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Train / Metro
+
+                        <input
+                            id="train"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="20"
+                        >
+
+                        <span
+                            class="range-value"
+                            id="trainValue"
+                        >
+                            20%
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Walking / Cycling
+
+                        <input
+                            id="walk"
+                            type="range"
+                            min="0"
+                            max="100"
+                            value="10"
+                        >
+
+                        <span
+                            class="range-value"
+                            id="walkValue"
+                        >
+                            10%
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Logistics
+
+                        <input
+                            id="logistics"
+                            type="number"
+                            min="0"
+                            value="120"
+                        >
+
+                        <span class="unit">
+                            tonnes
+                        </span>
+
+                    </label>
+
+
+                    <label>
+                        Waste generated
+
+                        <input
+                            id="waste"
+                            type="number"
+                            min="0"
+                            value="18"
+                        >
+
+                        <span class="unit">
+                            tonnes
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <div
+                    class="input-warning"
+                    id="transportWarning"
+                >
+                    Transport shares should total 100%.
+                </div>
+
+
+                <button
+                    class="btn btn-primary optimize-btn"
+                    id="optimizeBtn"
+                >
+                    ⚡ OPTIMIZE EVENT
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- SIMULATION -->
+            <!-- ================================================= -->
+
+            <div
+                id="simulation"
+                class="simulation hidden"
+            >
+
+                <div class="simulation-inner">
+
+                    <span class="loader-ring"></span>
+
+                    <div>
+
+                        <small>
+                            ECOSTRATEGIX ENGINE
+                        </small>
+
+                        <strong id="simulationText">
+                            Analyzing Event Data...
+                        </strong>
+
+                    </div>
+
+                    <span class="sim-progress">
+                        <i></i>
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- STRATEGIES -->
+        <!-- ================================================= -->
+
+        <section
+            id="strategies"
+            class="strategies section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        03 / STRATEGY
+                    </span>
+
+                    <h2>
+                        Strategy Simulator
+                    </h2>
+
+                </div>
+
+                <p>
+                    Compare alternative plans instead of stopping
+                    at a single impact number.
+                </p>
+
+            </div>
+
+
+            <div class="strategy-grid">
+
+                <button
+                    class="strategy-card selected"
+                    data-strategy="current"
+                >
+
+                    <span>01</span>
+
+                    <h3>
+                        Current Plan
+                    </h3>
+
+                    <strong id="strategyCurrent">
+                        —
+                    </strong>
+
+                    <small>
+                        kg CO₂e · Current
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="strategy-card"
+                    data-strategy="transport"
+                >
+
+                    <span>02</span>
+
+                    <h3>
+                        Public Transport
+                    </h3>
+
+                    <strong id="strategyTransport">
+                        —
+                    </strong>
+
+                    <small>
+                        <span id="transportChange">
+                            Simulation required
+                        </span>
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="strategy-card"
+                    data-strategy="renewable"
+                >
+
+                    <span>03</span>
+
+                    <h3>
+                        Renewable + Public
+                    </h3>
+
+                    <strong id="strategyRenewable">
+                        —
+                    </strong>
+
+                    <small>
+                        <span id="renewableChange">
+                            Simulation required
+                        </span>
+                    </small>
+
+                </button>
+
+
+                <button
+                    class="strategy-card featured"
+                    data-strategy="optimized"
+                >
+
+                    <span>04</span>
+
+                    <h3>
+                        Optimized Plan
+                    </h3>
+
+                    <strong id="strategyOptimized">
+                        —
+                    </strong>
+
+                    <small id="optimizedChange">
+                        Simulation required
+                    </small>
+
+                </button>
+
+            </div>
+
+
+            <div class="strategy-detail">
+
+                <div>
+
+                    <span class="eyebrow">
+                        SELECTED STRATEGY
+                    </span>
+
+                    <h3 id="strategyTitle">
+                        Current Plan
+                    </h3>
+
+                    <p id="strategyDescription">
+                        Baseline scenario using the current
+                        event assumptions.
+                    </p>
+
+                </div>
+
+
+                <div class="strategy-mixes">
+
+                    <div>
+
+                        <small>
+                            TRANSPORT MIX
+                        </small>
+
+                        <strong id="transportMix">
+                            Run simulation to calculate.
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            ENERGY MIX
+                        </small>
+
+                        <strong id="energyMix">
+                            Run simulation to calculate.
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            WASTE
+                        </small>
+
+                        <strong id="wasteMix">
+                            Run simulation to calculate.
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            LOGISTICS
+                        </small>
+
+                        <strong id="logisticsMix">
+                            Run simulation to calculate.
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- CURRENT VS OPTIMIZED -->
+        <!-- ================================================= -->
+
+        <section class="comparison section">
+
+            <div class="compare-card">
+
+                <div class="compare-side current">
+
+                    <span class="eyebrow">
+                        CURRENT PLAN
+                    </span>
+
+                    <strong id="beforeImpact">
+                        —
+                    </strong>
+
+                    <small>
+                        kg CO₂e
+                    </small>
+
+                </div>
+
+
+                <div class="compare-arrow">
+                    →
+                </div>
+
+
+                <div class="compare-side optimized">
+
+                    <span class="eyebrow">
+                        OPTIMIZED PLAN
+                    </span>
+
+                    <strong id="afterImpact">
+                        —
+                    </strong>
+
+                    <small>
+                        kg CO₂e
+                    </small>
+
+                </div>
+
+
+                <div class="reduction">
+
+                    <span>
+                        ESTIMATED REDUCTION
+                    </span>
+
+                    <strong id="reductionPercent">
+                        —
+                    </strong>
+
+                    <div class="progress-track">
+
+                        <i
+                            id="reductionBar"
+                            style="width:0%"
+                        ></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="changes">
+
+                <div>
+                    <i>01</i>
+                    <span>
+                        Public transport increased
+                    </span>
+                </div>
+
+                <div>
+                    <i>02</i>
+                    <span>
+                        Renewable energy increased
+                    </span>
+                </div>
+
+                <div>
+                    <i>03</i>
+                    <span>
+                        Event waste optimized
+                    </span>
+                </div>
+
+                <div>
+                    <i>04</i>
+                    <span>
+                        Logistics optimized
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- IMPACT -->
+        <!-- ================================================= -->
+
+        <section
+            id="impact"
+            class="impact-section section"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        04 / IMPACT
+                    </span>
+
+                    <h2>
+                        Where Does the Impact Come From?
+                    </h2>
+
+                </div>
+
+
+                <div class="toggle">
+
+                    <button
+                        class="active"
+                        data-plan="current"
+                    >
+                        Current Plan
+                    </button>
+
+                    <button
+                        data-plan="optimized"
+                    >
+                        Optimized Plan
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="analytics-grid">
+
+
+                <div class="chart-card">
+
+                    <div class="chart-head">
+
+                        <div>
+
+                            <small>
+                                IMPACT BREAKDOWN
+                            </small>
+
+                            <strong id="chartPlanTitle">
+                                Current Plan
+                            </strong>
+
+                        </div>
+
+                        <span>
+                            kg CO₂e
+                        </span>
+
+                    </div>
+
+
+                    <canvas id="impactChart"></canvas>
+
+                </div>
+
+
+                <div class="insight-card">
+
+                    <span class="eyebrow">
+                        SIMULATION INSIGHT
+                    </span>
+
+                    <h3 id="insightTitle">
+                        Run the simulation to identify
+                        the highest-impact category.
+                    </h3>
+
+                    <p id="insightText">
+                        EcoStrategix analyzes the backend
+                        impact breakdown and identifies
+                        where a strategy can make the
+                        largest difference.
+                    </p>
+
+
+                    <div class="insight-line">
+
+                        <span>
+                            Highest lever
+                        </span>
+
+                        <strong id="insightLever">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="insight-line">
+
+                        <span>
+                            Strategy effect
+                        </span>
+
+                        <strong id="insightEffect">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- SDG -->
+        <!-- ================================================= -->
+
+        <section class="sdg section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        05 / SUSTAINABILITY
+                    </span>
+
+                    <h2>
+                        Sustainability Impact
+                    </h2>
+
+                </div>
+
+                <p>
+                    EcoStrategix connects event planning decisions
+                    with selected UN Sustainable Development Goals.
+                </p>
+
+            </div>
+
+
+            <div class="sdg-grid">
+
+                <article>
+
+                    <span>07</span>
+
+                    <h3>
+                        Affordable & Clean Energy
+                    </h3>
+
+                    <p>
+                        Encourages renewable energy and lower
+                        energy intensity in event scenarios.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>11</span>
+
+                    <h3>
+                        Sustainable Cities
+                    </h3>
+
+                    <p>
+                        Supports lower-impact attendee mobility
+                        and event transport planning.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>12</span>
+
+                    <h3>
+                        Responsible Consumption
+                    </h3>
+
+                    <p>
+                        Highlights waste reduction and more
+                        efficient resource use.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>13</span>
+
+                    <h3>
+                        Climate Action
+                    </h3>
+
+                    <p>
+                        Turns estimated event impact into
+                        strategy options for comparison.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- MAP + REPORT -->
+        <!-- ================================================= -->
+
+        <section class="map-report section">
+
+
+            <div class="map-card">
+
+                <div class="map-head">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            OPTIONAL MAP VIEW
+                        </span>
+
+                        <h3>
+                            Event Mobility Map
+                        </h3>
+
+                    </div>
+
+                    <span id="mapLabel">
+                        F1 Circuit · Transport Routes
+                    </span>
+
+                </div>
+
+
+                <div id="map"></div>
+
+            </div>
+
+
+            <div class="report-card">
+
+                <span class="eyebrow">
+                    06 / REPORT
+                </span>
+
+                <h2>
+                    Generate the
+                    <br>
+                    Event Report.
+                </h2>
+
+                <p>
+                    Turn the scenario and strategy comparison
+                    into a concise presentation-ready
+                    sustainability summary.
+                </p>
+
+
+                <div class="report-preview">
+
+                    <div>
+
+                        <span>
+                            Current
+                        </span>
+
+                        <strong id="reportCurrent">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Optimized
+                        </span>
+
+                        <strong id="reportOptimized">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Reduction
+                        </span>
+
+                        <strong id="reportReduction">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="btn btn-primary"
+                    id="reportBtn"
+                >
+                    GENERATE EVENT REPORT
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- ABOUT -->
+        <!-- ================================================= -->
+
+        <section
+            id="about"
+            class="final section"
+        >
+
+            <span class="eyebrow">
+                ECOSTRATEGIX
+            </span>
+
+            <h2>
+                One Platform.
+                <br>
+                Every Event.
+                <br>
+                <em>Better Strategies.</em>
+            </h2>
+
+            <p>
+                Impact → Strategy → Simulation → Optimization
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================================= -->
+    <!-- FOOTER -->
+    <!-- ================================================= -->
+
+    <footer>
+
+        <div>
+
+            <strong>
+                ECOSTRATEGIX
+            </strong>
+
+            <span>
+                Event Sustainability Strategy Simulator
+            </span>
+
+        </div>
+
+        <span>
+            Illustrative demo · 2026
+        </span>
+
+    </footer>
+
+
+    <!-- ================================================= -->
+    <!-- TOAST -->
+    <!-- ================================================= -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        Scenario updated.
+    </div>
+
+
+    <!-- ================================================= -->
+    <!-- LIBRARIES -->
+    <!-- ================================================= -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"
+    ></script>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
